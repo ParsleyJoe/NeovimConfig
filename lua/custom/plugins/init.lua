@@ -11,3 +11,12 @@ for file_name, type in vim.fs.dir(plugins_dir) do
     require('custom.plugins.' .. module)
   end
 end
+
+
+
+-- Smear cursor (Cursor animation)
+vim.pack.add({
+  "https://github.com/sphamba/smear-cursor.nvim",
+})
+
+require('smear_cursor').setup({})
