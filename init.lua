@@ -122,7 +122,8 @@ do
   --  Schedule the setting after `UiEnter` because it can increase startup-time.
   --  Remove this option if you want your OS clipboard to remain independent.
   --  See `:help 'clipboard'`
-  vim.schedule(function() vim.o.clipboard = 'unnamedplus' end)
+  -- vim.schedule(function() vim.o.clipboard = 'unnamedplus' end)
+  vim.o.clipboard = 'unnamedplus'
 
   -- Enable break indent
   vim.o.breakindent = true
@@ -158,11 +159,14 @@ do
   vim.o.list = true
   vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 
+  vim.o.wrap = false
+
   -- Preview substitutions live, as you type!
   vim.o.inccommand = 'split'
 
   -- Show which line your cursor is on
   vim.o.cursorline = true
+
 
   -- Minimal number of screen lines to keep above and below the cursor.
   vim.o.scrolloff = 10
@@ -686,7 +690,12 @@ do
   --  See `:help lsp-config` for information about keys and how to configure
   ---@type table<string, vim.lsp.Config>
   local servers = {
-    -- clangd = {},
+    clangd = {
+    cmd = {
+          "clangd",
+          "--query-driver=/usr/bin/g++"
+      }
+    },
     -- gopls = {},
     -- pyright = {},
     -- rust_analyzer = {},
