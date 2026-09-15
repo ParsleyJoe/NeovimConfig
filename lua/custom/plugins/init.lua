@@ -18,5 +18,16 @@ end
 vim.pack.add({
   "https://github.com/sphamba/smear-cursor.nvim",
 })
-
 require('smear_cursor').setup({})
+
+vim.pack.add({
+    "https://github.com/lukas-reineke/indent-blankline.nvim"
+})
+require('ibl').setup(
+  {
+    scope = {
+      enabled = false
+    }
+  }
+)
+
